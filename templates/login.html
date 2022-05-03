@@ -1,0 +1,13 @@
+<html>
+<head>
+    <link rel="stylesheet" href={{ url_for('static', filename='mystyle.css' ) }} />
+</head>
+<body style="margin-top: 20%;">
+    <h1>Log in to ET's Picks!</h1>
+    <form action="/login" method="POST">
+        <input type="text" name="user" value="Enter your username">
+        <input type="submit" value="Login">
+    </form>
+    <h2><a href={{url_for('signup') }}>Dont have an account?</a></h2>
+</body>
+</html>

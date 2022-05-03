@@ -1,0 +1,25 @@
+body {
+    background-image: linear-gradient(blue,white);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+  }
+  
+  img {
+    border-radius: 25px;
+  }
+  
+  audio {
+    padding-bottom: 30px;
+  }
+
+  .column{
+    float: left;
+    width: 50%;
+  }
+
+  .column2{
+    float: right;
+    width: 50%;
+    margin-top: 5%;
+  }
