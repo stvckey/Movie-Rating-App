@@ -3,7 +3,6 @@ from models import User, Rating
 import flask
 import os
 import random
-import flask
 from flask_login import login_user, current_user, LoginManager, logout_user
 from flask_login.utils import login_required
 
@@ -116,7 +115,9 @@ def rate():
 @app.route("/get_reviews", methods=["GET"])
 @login_required
 def foo():
+    #retrieves all database ratings of current user
     ratings = Rating.query.filter_by(username=current_user.username).all()
+    #creates dictionary using ratings from database
     return flask.jsonify(
         [
             {
@@ -128,11 +129,13 @@ def foo():
         ]
     )
 
-
+#updates database with new movie reviews
 @app.route("/save_reviews", methods=["POST"])
 def save_reviews():
+    #request json returned from App.js save function
     data = flask.request.json
     user_ratings = Rating.query.filter_by(username=current_user.username).all()
+    #iterate through JSON returned from App.js save function and populate database with changes (if any)
     new_ratings = [
         Rating(
             username=current_user.username,
@@ -142,10 +145,13 @@ def save_reviews():
         )
         for r in data
     ]
+    #delete all ratings
     for rating in user_ratings:
         db.session.delete(rating)
+    #replace all ratings with new ratings
     for rating in new_ratings:
         db.session.add(rating)
+    #conclude db session
     db.session.commit()
     return flask.jsonify("Ratings successfully saved")
 

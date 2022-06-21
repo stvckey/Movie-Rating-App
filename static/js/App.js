@@ -15,9 +15,6 @@ function App() {
   //val is a refrence to our variable and setVal is a function to change all arguments using the name "val"
     const[val, setVal] = React.useState([])
 
-
-
-
     function handleDelete(i) {
       setVal([...val.slice(0, i), ...val.slice(i+1)]);
     }
@@ -33,9 +30,6 @@ function App() {
       newReviews[i].comment = e.target.value;
       setVal(newReviews);
     }
-
-
-
 
 
       //Posts review changes back to 'save_reviews' route
